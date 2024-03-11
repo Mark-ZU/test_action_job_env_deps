@@ -1,0 +1,16 @@
+name: Build
+run-name: job env deps test
+on:
+  push:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo txt file
+      run: echo "test.txt" >> test.txt
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+    - name: get txt file
+      run: cat test.txt
